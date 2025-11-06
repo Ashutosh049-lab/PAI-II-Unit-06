@@ -57,4 +57,4 @@ const Ticket = require("../models/ticket.model");
 };
 
 
-module.exports=getReport;
+module.exports = { getReport };

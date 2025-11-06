@@ -6,7 +6,6 @@ const { app } = require("./app");
 
 dotenv.config();
 
-const app=express();
 
 app.use(express.json());
 connectDB();

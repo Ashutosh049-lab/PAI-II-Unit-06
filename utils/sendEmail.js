@@ -1,5 +1,4 @@
-
-const nodemailer = require( "nodemailer");
+const nodemailer = require("nodemailer");
 
 const transporter = nodemailer.createTransport({
   service: "gmail",
@@ -9,7 +8,7 @@ const transporter = nodemailer.createTransport({
   }
 });
 
-export async function sendEmail({ to, subject, html }) {
+async function sendEmail({ to, subject, html }) {
   const info = await transporter.sendMail({
     from: `"Eventify" <${process.env.GMAIL_USER}>`,
     to,
@@ -19,10 +18,9 @@ export async function sendEmail({ to, subject, html }) {
   return info.messageId;
 }
 
-
-export const templates = {
+const templates = {
   welcome: (name) => `
-    <h3>Welcome to Eventify </h3>
+    <h3>Welcome to Eventify 🎟️</h3>
     <p>Hello <strong>${name}</strong>, your account has been created successfully.</p>
   `,
   booking: ({ userName, eventName, quantity, totalAmount }) => `
@@ -36,4 +34,9 @@ export const templates = {
     <h3>Eventify — Booking Cancelled</h3>
     <p>Hi <strong>${userName}</strong>, your booking for <strong>${eventName}</strong> has been cancelled.</p>
   `
+};
+
+module.exports = {
+  sendEmail,
+  templates
 };

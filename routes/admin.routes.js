@@ -1,10 +1,9 @@
 
-const router=require("express");
-const getReport=require("../controllers/admin.controller");
-const {auth,isAdmin} = require("../middlewares/auth.middleware");
+const router = require("express").Router();
 
-const router=Router();
+const { getReport } = require("../controllers/admin.controller");
+const { auth, isAdmin } = require("../middlewares/auth.middleware");
 
-router.get("/reports",auth,isAdmin,getReport);
+router.get("/reports", auth, isAdmin, getReport);
 
-module.exports=router;
+module.exports = router;
